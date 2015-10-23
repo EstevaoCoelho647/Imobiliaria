@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:card_view="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/card_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:elevation="12dp"
+        card_view:cardCornerRadius="2dp"
+        card_view:cardPreventCornerOverlap="false"
+        card_view:cardUseCompatPadding="true"
+        card_view:cardElevation="4dp">
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <android.support.v7.widget.Toolbar
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/viewToobar"
+                android:layout_below="@+id/image"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"/>
+
+
+            <ImageView
+                android:id="@+id/image"
+                android:layout_width="125dp"
+                android:layout_height="125dp" />
+
+            <TextView
+                android:id="@+id/textViewProprietario"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:textColor="@android:color/primary_text_light"
+                android:layout_above="@+id/textView9"
+                android:layout_toRightOf="@+id/image"
+                android:layout_toLeftOf="@+id/textViewPreco"
+                android:layout_toStartOf="@+id/textViewPreco" />
+
+            <TextView
+                android:id="@+id/textViewPreco"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:textColor="@android:color/primary_text_light"
+                android:layout_below="@+id/textView"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentEnd="true"
+                android:layout_alignLeft="@+id/textView9"
+                android:layout_alignStart="@+id/textView9" />
+
+            <TextView
+                    android:id="@+id/textView9"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Quartosv"
+                    android:textAppearance="?android:attr/textAppearanceSmall"
+                    android:layout_below="@+id/textViewPreco"
+                    android:layout_alignRight="@+id/ratingBar2"
+                    android:layout_alignEnd="@+id/ratingBar2"
+                    android:layout_marginRight="36dp"
+                    android:layout_marginEnd="36dp" />
+
+            <TextView
+                    android:id="@+id/textView10"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Banheiros"
+                    android:textAppearance="?android:attr/textAppearanceSmall"
+                    android:layout_alignTop="@+id/textView9"
+                    android:layout_toRightOf="@+id/image"
+                    android:layout_toEndOf="@+id/image" />
+
+                <TextView
+                    android:id="@+id/textViewNquartos"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:textColor="@android:color/primary_text_light"
+                    android:layout_alignLeft="@+id/textView9"
+                    android:layout_alignStart="@+id/textView9"
+                    android:layout_toStartOf="@+id/textView10"
+                    android:layout_below="@+id/textView9"
+                    android:layout_alignParentRight="true"
+                    android:layout_alignParentEnd="true" />
+
+                <TextView
+                    android:id="@+id/textViewNBanheiros"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:textColor="@android:color/primary_text_light"
+                    android:layout_below="@+id/textView10"
+                    android:layout_alignLeft="@+id/textView10"
+                    android:layout_alignStart="@+id/textView10"
+                    android:layout_toLeftOf="@+id/textViewPreco"
+                    android:layout_toStartOf="@+id/textViewPreco" />
+
+                <RatingBar
+                    android:id="@+id/ratingBar2"
+                    style="?android:attr/ratingBarStyleIndicator"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:numStars="5"
+                    android:layout_below="@+id/textViewNquartos"
+                    android:layout_toRightOf="@+id/textView13"
+                    android:layout_toEndOf="@+id/textView13" />
+
+                <TextView
+                    android:id="@+id/textView13"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Nota"
+                    android:textAppearance="?android:attr/textAppearanceSmall"
+                    android:layout_toRightOf="@+id/image"
+                    android:layout_alignTop="@+id/ratingBar2" />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="1dp"
+                android:id="@+id/imageView"
+                android:layout_alignRight="@+id/textViewNquartos"
+                android:layout_alignEnd="@+id/textViewNquartos"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:background="#fff2f2f2"
+                android:layout_alignTop="@+id/viewToobar" />
+
+            <TextView
+                android:id="@+id/textView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Preço"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:layout_alignParentTop="true"
+                android:layout_toRightOf="@+id/textViewProprietario"
+                android:layout_toEndOf="@+id/textViewProprietario" />
+
+            <TextView
+                android:id="@+id/textView2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Proprietário"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:layout_alignParentTop="true"
+                android:layout_toRightOf="@+id/image"
+                android:layout_toEndOf="@+id/image" />
+
+        </RelativeLayout>
+    </android.support.v7.widget.CardView>
+
+
+</LinearLayout>
