@@ -3,7 +3,7 @@
 
     <item
         android:id="@+id/mapa"
-        android:icon="@drawable/ic_action_map"
+        android:icon="@drawable/ic_map"
         android:title="Ver no Mapa"
         app:showAsAction="always" />
 

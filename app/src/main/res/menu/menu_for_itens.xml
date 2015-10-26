@@ -5,19 +5,27 @@
 
     <item
         android:id="@+id/call"
-        app:showAsAction="always"
         android:icon="@drawable/ic_action_call"
-        android:title="Deletar" />
+        android:title="Deletar"
+        app:showAsAction="always" />
+
     <item
-    android:id="@+id/edit"
-    app:showAsAction="always"
-    android:icon="@drawable/ic_action_edit"
-    android:title="Deletar" />
+        android:id="@+id/verMapa"
+        android:icon="@drawable/ic_action_map"
+        android:title="Ver no Mapa"
+        app:showAsAction="always" />
+
+    <item
+        android:id="@+id/edit"
+        android:icon="@drawable/ic_action_edit"
+        android:title="Deletar"
+        app:showAsAction="always" />
 
     <item
         android:id="@+id/delete"
-        app:showAsAction="always"
         android:icon="@drawable/ic_action_x_mark_512"
-        android:title="Deletar" />
+        android:title="Deletar"
+        app:showAsAction="always" />
+
 
 </menu>

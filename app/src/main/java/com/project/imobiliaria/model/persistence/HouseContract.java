@@ -25,8 +25,9 @@ public class HouseContract {
     public static String TELCONTATO = "telContato";
     public static String PRECO = "preco";
     public static String IMG ="img";
+    public static String NUMERO = "num";
 
-    public static final String[] COLUNS = {ID, TITLE, BAIRRO, RUA, NQUARTOS, NBANHEIROS, NOTA, IMG, TELCONTATO, PRECO};
+    public static final String[] COLUNS = {ID, TITLE, BAIRRO, RUA, NQUARTOS, NBANHEIROS, NOTA, IMG, TELCONTATO, PRECO, NUMERO};
 
     public static String getCreateTableScript() {
         final StringBuilder create =  new StringBuilder();
@@ -42,7 +43,8 @@ public class HouseContract {
         create.append( NOTA + " REAL, ");
         create.append( IMG + " TEXT,  ");
         create.append( TELCONTATO + " TEXT, ");
-        create.append( PRECO + " TEXT ");
+        create.append( PRECO + " TEXT, ");
+        create.append( NUMERO + " INTEGER ");
         create.append( " ); ");
 
         return create.toString();
@@ -60,6 +62,7 @@ public class HouseContract {
         values.put(HouseContract.IMG, house.getFoto());
         values.put(HouseContract.TELCONTATO, house.getTelContato());
         values.put(HouseContract.PRECO, house.getPreco());
+        values.put(HouseContract.NUMERO, house.getNumero());
 
         return values;
     }
@@ -77,6 +80,7 @@ public class HouseContract {
             house.setFoto(cursor.getString(cursor.getColumnIndex(HouseContract.IMG)));
             house.setTelContato(cursor.getString(cursor.getColumnIndex(HouseContract.TELCONTATO)));
             house.setPreco(cursor.getDouble(cursor.getColumnIndex(HouseContract.PRECO)));
+            house.setNumero(cursor.getLong(cursor.getColumnIndex(HouseContract.NUMERO)));
 
             return house;
         }

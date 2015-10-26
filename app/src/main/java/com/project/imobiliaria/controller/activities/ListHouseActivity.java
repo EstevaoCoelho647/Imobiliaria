@@ -8,6 +8,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.RecyclerView;
 import android.view.ContextMenu;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -116,6 +117,14 @@ public class ListHouseActivity extends AppCompatActivity {
                 goToCall.setData(telContato);
                 startActivity(goToCall);
             }
+
+            @Override
+            public void verMap(House house) {
+                itemSelected = house;
+                Intent goToMapa = new Intent(ListHouseActivity.this, ViewHouses.class);
+                goToMapa.putExtra("SelectedHouse", itemSelected);
+                startActivity(goToMapa);
+            }
         });
     }
 
@@ -124,5 +133,16 @@ public class ListHouseActivity extends AppCompatActivity {
         MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.menu_list_house, menu);
         return super.onCreateOptionsMenu(menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+
+        if(item.getItemId() == R.id.mapa){
+            Intent goToMapa = new Intent(ListHouseActivity.this, ViewHouses.class);
+            startActivity(goToMapa);
+
+        }
+        return super.onOptionsItemSelected(item);
     }
 }

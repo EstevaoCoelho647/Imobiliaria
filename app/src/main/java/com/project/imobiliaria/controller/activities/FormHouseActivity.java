@@ -40,6 +40,7 @@ public class FormHouseActivity extends AppCompatActivity {
     RatingBar nota;
     ImageView foto;
     String caminhoArquivo;
+    EditText numero;
     House house;
 
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,6 +57,7 @@ public class FormHouseActivity extends AppCompatActivity {
         bindFoto();
         bindNota();
         bindPreco();
+        bindNumero();
 
     }
 
@@ -102,6 +104,8 @@ public class FormHouseActivity extends AppCompatActivity {
         house.setTelContato(telContato.getText().toString());
         house.setPreco(Double.parseDouble(preco.getText().toString()));
         house.setNota((double) nota.getRating());
+        house.setNumero(Long.parseLong(numero.getText().toString()));
+
         if (caminhoArquivo != null) {
             house.setFoto(caminhoArquivo);
         }
@@ -147,9 +151,16 @@ public class FormHouseActivity extends AppCompatActivity {
         preco = (EditText) findViewById(R.id.editTextPreco);
         preco.setText(house.getPreco() == null ? "" : house.getPreco().toString());
     }
+
+    private void bindNumero() {
+        numero = (EditText) findViewById(R.id.editTextNum);
+        numero.setText(house.getNumero() == null ? "" : house.getNumero().toString());
+    }
+
+
     private void bindFoto() {
         foto = (ImageView) findViewById(R.id.image);
-        foto.setImageDrawable(getResources().getDrawable(R.drawable.images));
+        foto.setImageDrawable(getResources().getDrawable(R.drawable.ic_picture));
 
         foto.setOnClickListener(new View.OnClickListener() {
             @Override

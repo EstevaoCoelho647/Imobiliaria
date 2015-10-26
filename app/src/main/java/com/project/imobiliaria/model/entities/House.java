@@ -17,6 +17,15 @@ public class House implements Parcelable {
     private String foto;
     private String telContato;
     private Double preco;
+    private Long numero;
+
+    public Long getNumero() {
+        return numero;
+    }
+
+    public void setNumero(Long numero) {
+        this.numero = numero;
+    }
 
     public Long getId() {
         return id;
@@ -98,6 +107,16 @@ public class House implements Parcelable {
         this.preco = preco;
     }
 
+
+    public String getEndereco() {
+        return rua + ", " + bairro + " " + numero + " SP";
+    }
+
+
+    public House() {
+    }
+
+
     @Override
     public int describeContents() {
         return 0;
@@ -111,13 +130,11 @@ public class House implements Parcelable {
         dest.writeString(this.rua == null ? "" : this.rua);
         dest.writeValue(this.nQuartos == null ? -1 : this.nQuartos);
         dest.writeValue(this.nBanheiros == null ? -1 : this.nBanheiros);
-        dest.writeValue(this.nota == null ?-1 : this.nota);
+        dest.writeValue(this.nota == null ? -1 : this.nota);
         dest.writeString(this.foto == null ? "" : this.foto);
-        dest.writeString(this.telContato== null ? "" : this.telContato);
-        dest.writeValue(this.preco == null ?-1 : this.preco);
-    }
-
-    public House() {
+        dest.writeString(this.telContato == null ? "" : this.telContato);
+        dest.writeValue(this.preco == null ? -1 : this.preco);
+        dest.writeValue(this.numero == null ? -1 : this.numero);
     }
 
     protected House(Parcel in) {
@@ -131,9 +148,10 @@ public class House implements Parcelable {
         this.foto = in.readString();
         this.telContato = in.readString();
         this.preco = (Double) in.readValue(Double.class.getClassLoader());
+        this.numero = (Long) in.readValue(Long.class.getClassLoader());
     }
 
-    public static final Parcelable.Creator<House> CREATOR = new Parcelable.Creator<House>() {
+    public static final Creator<House> CREATOR = new Creator<House>() {
         public House createFromParcel(Parcel source) {
             return new House(source);
         }

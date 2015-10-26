@@ -68,6 +68,8 @@ public abstract class ListHouseAdapter extends BaseAdapter {
                 if (item.getItemId() == R.id.delete){
                     deletar(house);
                 }
+                if (item.getItemId() == R.id.verMapa)
+                    verMap(house);
 
                 return true;
             }
@@ -90,7 +92,7 @@ public abstract class ListHouseAdapter extends BaseAdapter {
             Bitmap imageScaled = Bitmap.createScaledBitmap(imagem, 125, 125, false);
             image.setImageBitmap(imageScaled);
         } else {
-            image.setImageDrawable(listHouseActivity.getResources().getDrawable(R.drawable.images));
+            image.setImageDrawable(listHouseActivity.getResources().getDrawable(R.drawable.ic_picture));
         }
 
         return linha;
@@ -99,5 +101,6 @@ public abstract class ListHouseAdapter extends BaseAdapter {
     public abstract void deletar(House house);
     public abstract void editar(House house);
     public abstract void chamar(House house);
+    public abstract void verMap(House house);
 }
 
