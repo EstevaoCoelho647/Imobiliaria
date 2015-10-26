@@ -1,23 +1,21 @@
 package com.project.imobiliaria.controller.activities;
 
+import android.annotation.TargetApi;
 import android.app.AlertDialog;
-import android.app.Dialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.RecyclerView;
-import android.view.ContextMenu;
-import android.view.LayoutInflater;
-import android.view.Menu;
-import android.view.MenuInflater;
+import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.Toast;
+
 
 import com.project.imobiliaria.R;
 import com.project.imobiliaria.controller.adapters.ListHouseAdapter;
@@ -31,13 +29,32 @@ public class ListHouseActivity extends AppCompatActivity {
     ListView listHouse;
     House itemSelected;
     FloatingActionButton fab;
+    Toolbar toolbar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_list_house);
+        binToolbar();
         binLisHouse();
         binFloatButton();
+    }
+
+    @TargetApi(Build.VERSION_CODES.LOLLIPOP)
+    private void binToolbar() {
+        toolbar = (Toolbar) findViewById(R.id.viewToobar);
+        toolbar.inflateMenu(R.menu.menu_list_house);
+
+        toolbar.setOnMenuItemClickListener(new Toolbar.OnMenuItemClickListener() {
+            @Override
+            public boolean onMenuItemClick(MenuItem item) {
+                if (item.getItemId() == R.id.mapa) {
+                    Intent goToMapa = new Intent(ListHouseActivity.this, ViewHouses.class);
+                    startActivity(goToMapa);
+                }
+                return false;
+            }
+        });
     }
 
     private void binLisHouse() {
@@ -128,21 +145,5 @@ public class ListHouseActivity extends AppCompatActivity {
         });
     }
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        MenuInflater inflater = getMenuInflater();
-        inflater.inflate(R.menu.menu_list_house, menu);
-        return super.onCreateOptionsMenu(menu);
-    }
 
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-
-        if(item.getItemId() == R.id.mapa){
-            Intent goToMapa = new Intent(ListHouseActivity.this, ViewHouses.class);
-            startActivity(goToMapa);
-
-        }
-        return super.onOptionsItemSelected(item);
-    }
 }

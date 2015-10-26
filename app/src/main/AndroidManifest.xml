@@ -27,8 +27,7 @@
             android:name=".controller.activities.ViewHouses"
             android:label="Mapa"></activity>
         <activity
-            android:name=".controller.activities.ListHouseActivity"
-            android:label="@string/app_name">
+            android:name=".controller.activities.ListHouseActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />

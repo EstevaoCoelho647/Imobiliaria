@@ -7,5 +7,4 @@
         android:title="Ver no Mapa"
         app:showAsAction="always" />
 
-
 </menu>
