@@ -1,19 +1,23 @@
 package com.project.imobiliaria.controller.activities;
 
+import android.annotation.TargetApi;
 import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
 import android.provider.MediaStore;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.RatingBar;
@@ -42,6 +46,9 @@ public class FormHouseActivity extends AppCompatActivity {
     String caminhoArquivo;
     EditText numero;
     House house;
+    Toolbar toolbar;
+    CheckBox checkBtnAluguel;
+    CheckBox checkBtnVenda;
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -58,32 +65,29 @@ public class FormHouseActivity extends AppCompatActivity {
         bindNota();
         bindPreco();
         bindNumero();
-
+        binToolbar();
+        binCheckBoxAluguel();
+        binCheckBoxVenda();
     }
 
+    @TargetApi(Build.VERSION_CODES.LOLLIPOP)
+    private void binToolbar() {
+        toolbar = (Toolbar) findViewById(R.id.viewToobar);
+        toolbar.inflateMenu(R.menu.menu_form);
 
-
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        MenuInflater inflater = getMenuInflater();
-        inflater.inflate(R.menu.menu_form, menu);
-        return super.onCreateOptionsMenu(menu);
+        toolbar.setOnMenuItemClickListener(new Toolbar.OnMenuItemClickListener() {
+            @Override
+            public boolean onMenuItemClick(MenuItem item) {
+                if (item.getItemId() == R.id.ok_add) {
+                    bindHouse();
+                    HouseRepository.save(house);
+                    Toast.makeText(FormHouseActivity.this, "Residencia adicionada/editada com sucesso!", Toast.LENGTH_LONG).show();
+                    finish();
+                }
+                return false;
+            }
+        });
     }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()) {
-            case R.id.ok_add:
-                bindHouse();
-                HouseRepository.save(house);
-                Toast.makeText(FormHouseActivity.this, "Residencia adicionada/editada com sucesso!", Toast.LENGTH_LONG).show();
-                finish();
-
-                break;
-        }
-        return super.onOptionsItemSelected(item);
-    }
-
 
     private void initHouse() {
         Bundle values = getIntent().getExtras();
@@ -105,11 +109,12 @@ public class FormHouseActivity extends AppCompatActivity {
         house.setPreco(Double.parseDouble(preco.getText().toString()));
         house.setNota((double) nota.getRating());
         house.setNumero(Long.parseLong(numero.getText().toString()));
+        house.setEhAluguel(checkBtnAluguel.isChecked());
+        house.setEhVenda(checkBtnVenda.isChecked());
 
         if (caminhoArquivo != null) {
             house.setFoto(caminhoArquivo);
         }
-
     }
 
     private void bindTitulo() {
@@ -157,6 +162,17 @@ public class FormHouseActivity extends AppCompatActivity {
         numero.setText(house.getNumero() == null ? "" : house.getNumero().toString());
     }
 
+    private void binCheckBoxVenda() {
+        checkBtnVenda = (CheckBox) findViewById(R.id.checkBoxEhVenda);
+        checkBtnVenda.setChecked(house.getEhVenda());
+    }
+
+    private void binCheckBoxAluguel() {
+        checkBtnAluguel = (CheckBox) findViewById(R.id.checkBoxEhAluguel);
+        checkBtnAluguel.setChecked(house.getEhAluguel());
+    }
+
+
 
     private void bindFoto() {
         foto = (ImageView) findViewById(R.id.image);
@@ -184,7 +200,6 @@ public class FormHouseActivity extends AppCompatActivity {
         }
     }
 
-
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         if (requestCode == 123) {
@@ -193,7 +208,6 @@ public class FormHouseActivity extends AppCompatActivity {
             } else {
                 caminhoArquivo = house.getFoto();
             }
-
         }
     }
 

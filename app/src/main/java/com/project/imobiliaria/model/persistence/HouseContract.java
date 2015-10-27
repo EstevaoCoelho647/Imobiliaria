@@ -26,8 +26,11 @@ public class HouseContract {
     public static String PRECO = "preco";
     public static String IMG ="img";
     public static String NUMERO = "num";
+    public static String EHALUGUEL = "ehAluguel";
+    public static String EHVENDA = "ehVenda";
 
-    public static final String[] COLUNS = {ID, TITLE, BAIRRO, RUA, NQUARTOS, NBANHEIROS, NOTA, IMG, TELCONTATO, PRECO, NUMERO};
+
+    public static final String[] COLUNS = {ID, TITLE, BAIRRO, RUA, NQUARTOS, NBANHEIROS, NOTA, IMG, TELCONTATO, PRECO, NUMERO,EHALUGUEL, EHVENDA };
 
     public static String getCreateTableScript() {
         final StringBuilder create =  new StringBuilder();
@@ -44,7 +47,9 @@ public class HouseContract {
         create.append( IMG + " TEXT,  ");
         create.append( TELCONTATO + " TEXT, ");
         create.append( PRECO + " TEXT, ");
-        create.append( NUMERO + " INTEGER ");
+        create.append( NUMERO + " INTEGER, ");
+        create.append( EHALUGUEL + " INTEGER, ");
+        create.append( EHVENDA + " INTEGER ");
         create.append( " ); ");
 
         return create.toString();
@@ -64,6 +69,12 @@ public class HouseContract {
         values.put(HouseContract.PRECO, house.getPreco());
         values.put(HouseContract.NUMERO, house.getNumero());
 
+        boolean a,b;
+        a = house.getEhAluguel();
+        b = house.getEhVenda();
+        values.put(HouseContract.EHALUGUEL, house.getEhAluguel() == true ? 0 : 1);
+        values.put(HouseContract.EHVENDA, house.getEhVenda() == true ? 0 : 1);
+
         return values;
     }
 
@@ -82,6 +93,11 @@ public class HouseContract {
             house.setPreco(cursor.getDouble(cursor.getColumnIndex(HouseContract.PRECO)));
             house.setNumero(cursor.getLong(cursor.getColumnIndex(HouseContract.NUMERO)));
 
+            int a,b;
+            a = cursor.getInt(cursor.getColumnIndex(HouseContract.EHALUGUEL));
+            b = cursor.getInt(cursor.getColumnIndex(HouseContract.EHVENDA));
+            house.setEhAluguel(cursor.getInt(cursor.getColumnIndex(HouseContract.EHALUGUEL)) == 0 ? true : false);
+            house.setEhVenda(cursor.getInt(cursor.getColumnIndex(HouseContract.EHVENDA)) == 0 ? true : false);
             return house;
         }
         return null;

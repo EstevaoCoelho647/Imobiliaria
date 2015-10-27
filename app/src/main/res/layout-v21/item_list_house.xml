@@ -24,10 +24,10 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:id="@+id/viewToobar"
-                android:layout_below="@+id/image"
-                android:layout_alignParentLeft="true"
-                android:layout_alignParentStart="true"
-                android:background="#fff8f8f8" />
+                android:background="#fff8f8f8"
+                android:layout_below="@+id/checkBoxAluguel"
+                android:layout_alignRight="@+id/textViewNquartos"
+                android:layout_alignEnd="@+id/textViewNquartos" />
 
 
             <ImageView
@@ -64,11 +64,9 @@
                     android:layout_height="wrap_content"
                     android:text="Quartosv"
                     android:textAppearance="?android:attr/textAppearanceSmall"
-                    android:layout_below="@+id/textViewPreco"
-                    android:layout_alignRight="@+id/ratingBar2"
-                    android:layout_alignEnd="@+id/ratingBar2"
-                    android:layout_marginRight="36dp"
-                    android:layout_marginEnd="36dp" />
+                android:layout_below="@+id/textViewPreco"
+                android:layout_alignRight="@+id/ratingBar2"
+                android:layout_alignEnd="@+id/ratingBar2" />
 
             <TextView
                     android:id="@+id/textView10"
@@ -111,9 +109,9 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:numStars="5"
-                    android:layout_below="@+id/textViewNquartos"
-                    android:layout_toRightOf="@+id/textView13"
-                    android:layout_toEndOf="@+id/textView13" />
+                    android:layout_below="@+id/textView13"
+                    android:layout_alignLeft="@+id/textView10"
+                    android:layout_alignStart="@+id/textView10" />
 
                 <TextView
                     android:id="@+id/textView13"
@@ -121,8 +119,9 @@
                     android:layout_height="wrap_content"
                     android:text="Nota"
                     android:textAppearance="?android:attr/textAppearanceSmall"
-                    android:layout_toRightOf="@+id/image"
-                    android:layout_alignTop="@+id/ratingBar2" />
+                    android:layout_below="@+id/textViewNBanheiros"
+                    android:layout_alignLeft="@+id/textViewNBanheiros"
+                    android:layout_alignStart="@+id/textViewNBanheiros" />
 
             <ImageView
                 android:layout_width="wrap_content"
@@ -143,7 +142,8 @@
                 android:textAppearance="?android:attr/textAppearanceSmall"
                 android:layout_alignParentTop="true"
                 android:layout_toRightOf="@+id/textViewProprietario"
-                android:layout_toEndOf="@+id/textViewProprietario" />
+                android:layout_toEndOf="@+id/textViewProprietario"
+                android:layout_marginTop="16dp" />
 
             <TextView
                 android:id="@+id/textView2"
@@ -153,7 +153,30 @@
                 android:textAppearance="?android:attr/textAppearanceSmall"
                 android:layout_alignParentTop="true"
                 android:layout_toRightOf="@+id/image"
-                android:layout_toEndOf="@+id/image" />
+                android:layout_toEndOf="@+id/image"
+                android:layout_marginTop="16dp" />
+
+            <CheckBox
+                android:id="@+id/checkBoxVenda"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:checked="true"
+                android:text="Venda"
+                style="@android:style/Widget.DeviceDefault.CheckedTextView"
+                android:layout_alignBaseline="@+id/checkBoxAluguel"
+                android:layout_alignBottom="@+id/checkBoxAluguel"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true" />
+
+            <CheckBox
+                android:id="@+id/checkBoxAluguel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:checked="true"
+                android:text="Aluguel"
+                android:layout_below="@+id/ratingBar2"
+                android:layout_alignRight="@+id/textView13"
+                android:layout_alignEnd="@+id/textView13" />
 
         </RelativeLayout>
     </android.support.v7.widget.CardView>

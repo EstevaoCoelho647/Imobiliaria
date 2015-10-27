@@ -18,6 +18,8 @@ public class House implements Parcelable {
     private String telContato;
     private Double preco;
     private Long numero;
+    private boolean ehAluguel;
+    private boolean ehVenda;
 
     public Long getNumero() {
         return numero;
@@ -117,6 +119,22 @@ public class House implements Parcelable {
     }
 
 
+    public boolean getEhAluguel() {
+        return ehAluguel;
+    }
+
+    public void setEhAluguel(boolean ehAluguel) {
+        this.ehAluguel = ehAluguel;
+    }
+
+    public boolean getEhVenda() {
+        return ehVenda;
+    }
+
+    public void setEhVenda(boolean ehVenda) {
+        this.ehVenda = ehVenda;
+    }
+
     @Override
     public int describeContents() {
         return 0;
@@ -135,6 +153,8 @@ public class House implements Parcelable {
         dest.writeString(this.telContato == null ? "" : this.telContato);
         dest.writeValue(this.preco == null ? -1 : this.preco);
         dest.writeValue(this.numero == null ? -1 : this.numero);
+        dest.writeByte(ehAluguel ? (byte) 1 : (byte) 0);
+        dest.writeByte(ehVenda ? (byte) 1 : (byte) 0);
     }
 
     protected House(Parcel in) {
@@ -149,6 +169,8 @@ public class House implements Parcelable {
         this.telContato = in.readString();
         this.preco = (Double) in.readValue(Double.class.getClassLoader());
         this.numero = (Long) in.readValue(Long.class.getClassLoader());
+        this.ehAluguel = in.readByte() != 0;
+        this.ehVenda = in.readByte() != 0;
     }
 
     public static final Creator<House> CREATOR = new Creator<House>() {

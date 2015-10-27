@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <ImageView
+        android:id="@+id/imageView2"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="16dp"
+        android:background="#ff86d1ff" />
+
+    <CheckBox
+        android:id="@+id/checkButtonvenda"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/imageView2"
+        android:layout_marginLeft="16dp"
+        android:checked="false"
+        android:text="Venda" />
+
+    <CheckBox
+        android:id="@+id/checkButtonAluguel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="25dp"
+        android:checked="false"
+        android:text="Aluguel"
+        android:layout_alignTop="@+id/checkButtonvenda"
+        android:layout_toRightOf="@+id/checkButtonvenda"
+        android:layout_toEndOf="@+id/checkButtonvenda"
+        android:layout_marginStart="25dp" />
+
+    <com.wrapp.floatlabelededittext.FloatLabeledEditText
+        android:id="@+id/editText3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/checkButtonvenda"
+        android:layout_alignLeft="@+id/checkButtonvenda"
+        android:layout_alignStart="@+id/checkButtonvenda"
+        android:layout_alignRight="@+id/checkButtonAluguel"
+        android:layout_alignEnd="@+id/checkButtonAluguel">
+
+        <EditText
+            android:id="@+id/editTextNQuartos"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@+id/checkButtonAluguel"
+            android:layout_alignStart="@+id/checkButtonAluguel"
+            android:layout_alignTop="@+id/view"
+            android:hint="Número de Quartos"
+            android:inputType="number" />
+
+    </com.wrapp.floatlabelededittext.FloatLabeledEditText>
+
+
+    <com.wrapp.floatlabelededittext.FloatLabeledEditText
+        android:id="@+id/editText2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/imageView2"
+        android:layout_toRightOf="@+id/editText"
+        android:layout_alignRight="@+id/btn_busca"
+        android:layout_alignEnd="@+id/btn_busca">
+
+        <EditText
+            android:id="@+id/editTextPreco"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignEnd="@+id/imageView2"
+            android:layout_alignRight="@+id/imageView2"
+            android:layout_alignTop="@+id/checkButtonvenda"
+            android:hint="Abaixo de"
+            android:inputType="number" />
+
+
+    </com.wrapp.floatlabelededittext.FloatLabeledEditText>
+
+    <com.wrapp.floatlabelededittext.FloatLabeledEditText
+        android:id="@+id/editText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/editText3"
+        android:layout_alignLeft="@+id/editText3"
+        android:layout_alignStart="@+id/editText3">
+
+        <EditText
+            android:id="@+id/editTextNBanheiros"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@+id/checkButtonAluguel"
+            android:layout_alignStart="@+id/checkButtonAluguel"
+            android:layout_alignTop="@+id/view"
+
+            android:hint="Número de Banheiros"
+            android:inputType="number" />
+
+    </com.wrapp.floatlabelededittext.FloatLabeledEditText>
+
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Buscar"
+        android:id="@+id/btn_busca"
+        android:layout_below="@+id/editText"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginRight="16dp"
+        android:layout_marginEnd="31dp"
+        android:layout_marginBottom="16dp" />
+
+
+</RelativeLayout>

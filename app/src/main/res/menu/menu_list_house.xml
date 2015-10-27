@@ -1,10 +1,17 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
+    <item android:id="@+id/busca"
+        android:title="Search"
+        android:icon="@drawable/ic_filtro"
+        app:showAsAction="collapseActionView|ifRoom"
+        android:actionViewClass="android.widget.SearchView" />
     <item
         android:id="@+id/mapa"
         android:icon="@drawable/ic_map"
         android:title="Ver no Mapa"
         app:showAsAction="always" />
+
+
 
 </menu>
