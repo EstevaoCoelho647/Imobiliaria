@@ -3,15 +3,9 @@ package com.project.imobiliaria.model.persistence;
 import android.content.ContentValues;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
-
 import com.project.imobiliaria.model.entities.House;
-
 import java.util.List;
-import java.util.SimpleTimeZone;
 
-/**
- * Created by c1284520 on 16/10/2015.
- */
 public class HouseRepository {
 
     public static void save(House house) {
@@ -58,10 +52,10 @@ public class HouseRepository {
         DatabaseHelper databaseHelper = DatabaseHelper.getInstance();
         SQLiteDatabase db = databaseHelper.getReadableDatabase();
 
-        String where  = HouseContract.NBANHEIROS + " > ? AND " + HouseContract.NQUARTOS + " > ? AND " +
-                HouseContract.EHVENDA + " = ? AND " + HouseContract.EHALUGUEL + " = ? AND " + HouseContract.PRECO + " < ? ;";
+        String where = HouseContract.NBANHEIROS + " >= ? AND " + HouseContract.NQUARTOS + " >= ? AND " +
+                HouseContract.EHVENDA + " = ? AND " + HouseContract.EHALUGUEL + " = ? AND " + HouseContract.PRECO + " <= ? ;";
 
-        String[] params = {String.valueOf(nBanheiros),String.valueOf(nQuartos),String.valueOf(ehVenda), String.valueOf(ehAluguel), String.valueOf(preco)};
+        String[] params = {String.valueOf(nBanheiros), String.valueOf(nQuartos), String.valueOf(ehVenda), String.valueOf(ehAluguel), String.valueOf(preco)};
 
         Cursor cursor = db.query(HouseContract.TABLE, HouseContract.COLUNS, where, params, null, null, null);
         List<House> values = HouseContract.getHouses(cursor);

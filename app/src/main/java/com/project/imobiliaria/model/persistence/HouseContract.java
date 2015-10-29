@@ -29,7 +29,6 @@ public class HouseContract {
     public static String EHALUGUEL = "ehAluguel";
     public static String EHVENDA = "ehVenda";
 
-
     public static final String[] COLUNS = {ID, TITLE, BAIRRO, RUA, NQUARTOS, NBANHEIROS, NOTA, IMG, TELCONTATO, PRECO, NUMERO,EHALUGUEL, EHVENDA };
 
     public static String getCreateTableScript() {
@@ -51,7 +50,6 @@ public class HouseContract {
         create.append( EHALUGUEL + " INTEGER, ");
         create.append( EHVENDA + " INTEGER ");
         create.append( " ); ");
-
         return create.toString();
     }
 
@@ -68,10 +66,6 @@ public class HouseContract {
         values.put(HouseContract.TELCONTATO, house.getTelContato());
         values.put(HouseContract.PRECO, house.getPreco());
         values.put(HouseContract.NUMERO, house.getNumero());
-
-        boolean a,b;
-        a = house.getEhAluguel();
-        b = house.getEhVenda();
         values.put(HouseContract.EHALUGUEL, house.getEhAluguel() == true ? 0 : 1);
         values.put(HouseContract.EHVENDA, house.getEhVenda() == true ? 0 : 1);
 
@@ -92,10 +86,6 @@ public class HouseContract {
             house.setTelContato(cursor.getString(cursor.getColumnIndex(HouseContract.TELCONTATO)));
             house.setPreco(cursor.getDouble(cursor.getColumnIndex(HouseContract.PRECO)));
             house.setNumero(cursor.getLong(cursor.getColumnIndex(HouseContract.NUMERO)));
-
-            int a,b;
-            a = cursor.getInt(cursor.getColumnIndex(HouseContract.EHALUGUEL));
-            b = cursor.getInt(cursor.getColumnIndex(HouseContract.EHVENDA));
             house.setEhAluguel(cursor.getInt(cursor.getColumnIndex(HouseContract.EHALUGUEL)) == 0 ? true : false);
             house.setEhVenda(cursor.getInt(cursor.getColumnIndex(HouseContract.EHVENDA)) == 0 ? true : false);
             return house;

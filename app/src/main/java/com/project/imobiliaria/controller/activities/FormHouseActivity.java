@@ -23,15 +23,13 @@ import android.widget.ImageView;
 import android.widget.RatingBar;
 import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
 import com.project.imobiliaria.R;
 import com.project.imobiliaria.model.entities.House;
 import com.project.imobiliaria.model.persistence.HouseRepository;
 
 import java.io.File;
 
-/**
- * Created by c1284520 on 16/10/2015.
- */
 public class FormHouseActivity extends AppCompatActivity {
 
     EditText titulo;
@@ -74,7 +72,6 @@ public class FormHouseActivity extends AppCompatActivity {
     private void binToolbar() {
         toolbar = (Toolbar) findViewById(R.id.viewToobar);
         toolbar.inflateMenu(R.menu.menu_form);
-
         toolbar.setOnMenuItemClickListener(new Toolbar.OnMenuItemClickListener() {
             @Override
             public boolean onMenuItemClick(MenuItem item) {
@@ -91,13 +88,11 @@ public class FormHouseActivity extends AppCompatActivity {
 
     private void initHouse() {
         Bundle values = getIntent().getExtras();
-
         if (values != null) {
             this.house = values.getParcelable("SelectedHouse");
         } else
             this.house = new House();
     }
-
 
     private void bindHouse() {
         house.setBairro(bairro.getText().toString());
@@ -111,7 +106,6 @@ public class FormHouseActivity extends AppCompatActivity {
         house.setNumero(Long.parseLong(numero.getText().toString()));
         house.setEhAluguel(checkBtnAluguel.isChecked());
         house.setEhVenda(checkBtnVenda.isChecked());
-
         if (caminhoArquivo != null) {
             house.setFoto(caminhoArquivo);
         }
@@ -192,11 +186,8 @@ public class FormHouseActivity extends AppCompatActivity {
                 startActivityForResult(goToCamera, 123);
             }
         });
-
         if ((house.getId() != null) && (!house.getFoto().equals(""))) {
-            Bitmap imagem = BitmapFactory.decodeFile(house.getFoto());
-            Bitmap imageScaled = Bitmap.createScaledBitmap(imagem, 125, 125, true);
-            foto.setImageBitmap(imageScaled);
+            Glide.with(this).load(house.getFoto()).into(foto);
         }
     }
 
@@ -213,10 +204,7 @@ public class FormHouseActivity extends AppCompatActivity {
 
     private void carregaImagem(String caminhoArquivo) {
         house.setFoto(caminhoArquivo);
-        Bitmap imagem = BitmapFactory.decodeFile(caminhoArquivo);
-        Bitmap imageScaled = Bitmap.createScaledBitmap(imagem, 125, 125, false);
-
-        foto.setImageBitmap(imageScaled);
+        Glide.with(this).load(house.getFoto()).into(foto);
     }
 
 }

@@ -64,10 +64,11 @@
         android:id="@+id/editText2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignTop="@+id/imageView2"
-        android:layout_toRightOf="@+id/editText"
-        android:layout_alignRight="@+id/btn_busca"
-        android:layout_alignEnd="@+id/btn_busca">
+        android:layout_below="@+id/editText"
+        android:layout_alignLeft="@+id/editText"
+        android:layout_alignStart="@+id/editText"
+        android:layout_alignRight="@+id/editText3"
+        android:layout_alignEnd="@+id/editText3">
 
         <EditText
             android:id="@+id/editTextPreco"

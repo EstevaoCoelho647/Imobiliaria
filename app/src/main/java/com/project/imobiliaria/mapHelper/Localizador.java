@@ -9,9 +9,6 @@ import com.google.android.gms.maps.model.LatLng;
 import java.io.IOException;
 import java.util.List;
 
-/**
- * Created by c1284520 on 26/10/2015.
- */
 public class Localizador {
 
     private final Context context;

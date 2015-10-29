@@ -114,10 +114,8 @@ public class House implements Parcelable {
         return rua + ", " + bairro + " " + numero + " SP";
     }
 
-
     public House() {
     }
-
 
     public boolean getEhAluguel() {
         return ehAluguel;
