@@ -16,12 +16,11 @@ import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
-import android.widget.ListView;
 import android.widget.Toast;
+
 import com.project.imobiliaria.R;
 import com.project.imobiliaria.RecyclerItemClickListener;
 import com.project.imobiliaria.controller.adapters.ListHouseAdapter;
@@ -161,17 +160,6 @@ public class ListHouseActivity extends AppCompatActivity {
         editTextPreco = (EditText) dialog.findViewById(R.id.editTextPreco);
         btnBusca = (Button) dialog.findViewById(R.id.btn_busca);
     }
-
-//    private void binLisHouse() {
-//        listHouse = (ListView) findViewById(R.id.list_houses);
-//        listHouse.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
-//            @Override
-//            public boolean onItemLongClick(AdapterView<?> adapter, View view, int posicao, long l) {
-//                itemSelected = (House) adapter.getItemAtPosition(posicao);
-//                return false;
-//            }
-//        });
-//    }
 
     private void binFloatButton() {
         fab = (FloatingActionButton) findViewById(R.id.fab);
