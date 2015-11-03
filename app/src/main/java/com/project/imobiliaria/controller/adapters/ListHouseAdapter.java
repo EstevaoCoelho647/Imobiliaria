@@ -4,7 +4,6 @@ import android.app.Dialog;
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
@@ -14,7 +13,6 @@ import android.widget.CheckBox;
 import android.widget.ImageView;
 import android.widget.RatingBar;
 import android.widget.TextView;
-
 import com.bumptech.glide.Glide;
 import com.project.imobiliaria.R;
 import com.project.imobiliaria.model.entities.House;
@@ -33,7 +31,6 @@ public abstract class ListHouseAdapter extends RecyclerView.Adapter<ListHouseAda
         this.context = context;
     }
 
-
     @Override
     public MyViewHolder onCreateViewHolder(ViewGroup viewGroup, int viewType) {
         context = viewGroup.getContext();
@@ -46,7 +43,7 @@ public abstract class ListHouseAdapter extends RecyclerView.Adapter<ListHouseAda
 
     @Override
     public void onBindViewHolder(final MyViewHolder holder, int position) {
-       final House house = getItem(position);
+        final House house = getItem(position);
         final ImageView image = holder.image;
         image.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -105,13 +102,11 @@ public abstract class ListHouseAdapter extends RecyclerView.Adapter<ListHouseAda
     @Override
     public int getItemCount() {
         return houses.size();
-
     }
 
     public House getItem(int position) {
         return houses.get(position);
     }
-
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
 
@@ -138,8 +133,6 @@ public abstract class ListHouseAdapter extends RecyclerView.Adapter<ListHouseAda
             image = (ImageView) itemView.findViewById(R.id.image);
             toolbar = (Toolbar) itemView.findViewById(R.id.viewToobar);
             toolbar.inflateMenu(R.menu.menu_for_itens);
-
-
         }
     }
 
