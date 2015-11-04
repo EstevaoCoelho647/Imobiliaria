@@ -204,5 +204,4 @@ public class FormHouseActivity extends AppCompatActivity {
         house.setFoto(caminhoArquivo);
         Glide.with(this).load(house.getFoto()).into(foto);
     }
-
 }

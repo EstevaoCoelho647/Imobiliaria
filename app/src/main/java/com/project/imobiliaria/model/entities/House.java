@@ -3,9 +3,7 @@ package com.project.imobiliaria.model.entities;
 import android.os.Parcel;
 import android.os.Parcelable;
 
-/**
- * Created by c1284520 on 16/10/2015.
- */
+
 public class House implements Parcelable {
     private Long id;
     private String titulo;
@@ -111,7 +109,7 @@ public class House implements Parcelable {
 
 
     public String getEndereco() {
-        return rua + ", " + bairro + " " + numero + " SP";
+        return rua + ", " + bairro + " - " + numero + " SP";
     }
 
     public House() {
