@@ -2,7 +2,6 @@ package com.project.imobiliaria.fragment;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
-import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 
 import com.google.android.gms.maps.CameraUpdate;

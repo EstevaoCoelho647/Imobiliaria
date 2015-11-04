@@ -26,6 +26,7 @@ import com.project.imobiliaria.RecyclerItemClickListener;
 import com.project.imobiliaria.controller.adapters.ListHouseAdapter;
 import com.project.imobiliaria.model.entities.House;
 import com.project.imobiliaria.model.persistence.HouseRepository;
+import com.project.imobiliaria.model.util.Helper;
 
 import java.util.List;
 
@@ -98,8 +99,12 @@ public class ListHouseActivity extends AppCompatActivity {
             @Override
             public boolean onMenuItemClick(MenuItem item) {
                 if (item.getItemId() == R.id.mapa2) {
-                    Intent goToMapa = new Intent(ListHouseActivity.this, ViewHouses.class);
-                    startActivity(goToMapa);
+                    if (Helper.verificaConexao(getApplicationContext())) {
+                        Intent goToMapa = new Intent(ListHouseActivity.this, ViewHouses.class);
+                        startActivity(goToMapa);
+                    } else {
+                        showErrorConnectionDialog();
+                    }
                 }
                 if (item.getItemId() == R.id.busca) {
                     LayoutInflater view = getLayoutInflater();
@@ -113,6 +118,19 @@ public class ListHouseActivity extends AppCompatActivity {
                 return false;
             }
         });
+    }
+
+    private void showErrorConnectionDialog() {
+        final AlertDialog.Builder dialogBuilder = new AlertDialog.Builder(ListHouseActivity.this);
+        dialogBuilder.setMessage("Nenhuma conexão com a internet detectada.\nPor favor verifique a sua conexão e tente novamente!");
+        dialogBuilder.setTitle("Aviso");
+        dialogBuilder.setNeutralButton("Ok", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                dialogBuilder.setCancelable(true);
+            }
+        });
+        dialogBuilder.show();
     }
 
     private void verificaClick(final Dialog dialog) {
@@ -178,19 +196,23 @@ public class ListHouseActivity extends AppCompatActivity {
     private void carregaListaPesquisa() {
         List<House> houses = HouseRepository.findByFilterItens(nBanheiros, nQuartos, ehVenda == true ? 0 : 1, ehAluguel == true ? 0 : 1, preco);
         if (houses.isEmpty()) {
-            final AlertDialog.Builder dialogBuilder = new AlertDialog.Builder(this);
-            dialogBuilder.setMessage("Nenhum resultado encontrado :(");
-            dialogBuilder.setTitle("Aviso");
-            dialogBuilder.setNeutralButton("Ok", new DialogInterface.OnClickListener() {
-                @Override
-                public void onClick(DialogInterface dialogInterface, int i) {
-                    dialogBuilder.setCancelable(true);
-                }
-            });
-            dialogBuilder.show();
+            showErrorNoResultFound();
         } else {
             setAdapterListHouses(houses);
         }
+    }
+
+    private void showErrorNoResultFound() {
+        final AlertDialog.Builder dialogBuilder = new AlertDialog.Builder(this);
+        dialogBuilder.setMessage("Nenhum resultado encontrado :(");
+        dialogBuilder.setTitle("Aviso");
+        dialogBuilder.setNeutralButton("Ok", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                dialogBuilder.setCancelable(true);
+            }
+        });
+        dialogBuilder.show();
     }
 
     private void carregaLista() {
@@ -239,10 +261,14 @@ public class ListHouseActivity extends AppCompatActivity {
 
             @Override
             public void verMap(House house) {
-                itemSelected = house;
-                Intent goToMapa = new Intent(ListHouseActivity.this, ViewHouses.class);
-                goToMapa.putExtra("SelectedHouse", itemSelected);
-                startActivity(goToMapa);
+                if (Helper.verificaConexao(getApplicationContext())) {
+                    itemSelected = house;
+                    Intent goToMapa = new Intent(ListHouseActivity.this, ViewHouses.class);
+                    goToMapa.putExtra("SelectedHouse", itemSelected);
+                    startActivity(goToMapa);
+                } else {
+                    showErrorConnectionDialog();
+                }
             }
         });
     }
