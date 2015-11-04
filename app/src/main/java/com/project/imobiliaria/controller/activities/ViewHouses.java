@@ -9,12 +9,16 @@ import com.project.imobiliaria.R;
 import com.project.imobiliaria.fragment.MapFragment;
 import com.project.imobiliaria.mapHelper.AtualizaPosicao;
 import com.project.imobiliaria.model.entities.House;
+import com.project.imobiliaria.model.persistence.HouseContract;
+import com.project.imobiliaria.model.persistence.HouseRepository;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class ViewHouses extends FragmentActivity {
     AtualizaPosicao atualizaPosicao;
     House house;
+    List<House> houses;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,18 +28,26 @@ public class ViewHouses extends FragmentActivity {
 
         if (house.getId() == null) {
             FragmentManager manager = getSupportFragmentManager();
-
             FragmentTransaction transaction = manager.beginTransaction();
+
             MapFragment mapFragment = new MapFragment();
-            transaction.replace(R.id.mapa, new MapFragment());
             transaction.replace(R.id.mapa, mapFragment);
+
             transaction.commit();
             atualizaPosicao = new AtualizaPosicao(this, mapFragment);
         } else {
+
             ArrayList<House> houses = new ArrayList<>();
             houses.add(house);
-            MapFragment mapFragment = new MapFragment();
-            mapFragment.markerLocals(getApplicationContext(), houses);
+
+            FragmentManager manager = getSupportFragmentManager();
+            FragmentTransaction transaction = manager.beginTransaction();
+
+            MapFragment mapFragment = new MapFragment(houses);
+            transaction.replace(R.id.mapa, mapFragment);
+
+            transaction.commit();
+            atualizaPosicao = new AtualizaPosicao(this, mapFragment);
         }
     }
 

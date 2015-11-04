@@ -9,9 +9,7 @@
         <item name="android:textColorSecondary">@color/secondary_text</item>
         <item name="android:divider">@color/divider</item>
         <item name="android:textColorTertiary">@color/divider</item>
-
     </style>
-
 
     <style name="CustomDialog" parent="@android:style/Theme.Holo.Dialog">
         <item name="android:windowBackground">@android:color/transparent</item>

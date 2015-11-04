@@ -2,16 +2,16 @@ package com.project.imobiliaria.model.util;
 
 import android.content.Context;
 
-public final class ApplicationUtil{
+public final class ApplicationUtil {
 
     private static Context context;
 
     private static Context applicationContext;
 
-    private ApplicationUtil(){
+    private ApplicationUtil() {
     }
 
-    public static void setContext(Context context){
+    public static void setContext(Context context) {
         ApplicationUtil.context = context;
     }
 

@@ -21,35 +21,35 @@ public class HouseContract {
     public static String RUA = "rua";
     public static String NQUARTOS = "nQuartos";
     public static String NBANHEIROS = "nBanheiros";
-    public static String NOTA ="nota";
+    public static String NOTA = "nota";
     public static String TELCONTATO = "telContato";
     public static String PRECO = "preco";
-    public static String IMG ="img";
+    public static String IMG = "img";
     public static String NUMERO = "num";
     public static String EHALUGUEL = "ehAluguel";
     public static String EHVENDA = "ehVenda";
 
-    public static final String[] COLUNS = {ID, TITLE, BAIRRO, RUA, NQUARTOS, NBANHEIROS, NOTA, IMG, TELCONTATO, PRECO, NUMERO,EHALUGUEL, EHVENDA };
+    public static final String[] COLUNS = {ID, TITLE, BAIRRO, RUA, NQUARTOS, NBANHEIROS, NOTA, IMG, TELCONTATO, PRECO, NUMERO, EHALUGUEL, EHVENDA};
 
     public static String getCreateTableScript() {
-        final StringBuilder create =  new StringBuilder();
+        final StringBuilder create = new StringBuilder();
 
         create.append(" CREATE TABLE " + TABLE);
         create.append(" ( ");
-        create.append( ID +  " INTEGER PRIMARY KEY, " );
-        create.append( TITLE + " TEXT, ");
-        create.append( BAIRRO + " TEXT, ");
-        create.append( RUA + " TEXT, ");
-        create.append( NQUARTOS + " INTEGER, ");
-        create.append( NBANHEIROS + " INTEGER, ");
-        create.append( NOTA + " REAL, ");
-        create.append( IMG + " TEXT,  ");
-        create.append( TELCONTATO + " TEXT, ");
-        create.append( PRECO + " TEXT, ");
-        create.append( NUMERO + " INTEGER, ");
-        create.append( EHALUGUEL + " INTEGER, ");
-        create.append( EHVENDA + " INTEGER ");
-        create.append( " ); ");
+        create.append(ID + " INTEGER PRIMARY KEY, ");
+        create.append(TITLE + " TEXT, ");
+        create.append(BAIRRO + " TEXT, ");
+        create.append(RUA + " TEXT, ");
+        create.append(NQUARTOS + " INTEGER, ");
+        create.append(NBANHEIROS + " INTEGER, ");
+        create.append(NOTA + " REAL, ");
+        create.append(IMG + " TEXT,  ");
+        create.append(TELCONTATO + " TEXT, ");
+        create.append(PRECO + " TEXT, ");
+        create.append(NUMERO + " INTEGER, ");
+        create.append(EHALUGUEL + " INTEGER, ");
+        create.append(EHVENDA + " INTEGER ");
+        create.append(" ); ");
         return create.toString();
     }
 

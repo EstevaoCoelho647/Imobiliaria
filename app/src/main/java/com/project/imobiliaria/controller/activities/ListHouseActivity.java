@@ -47,8 +47,6 @@ public class ListHouseActivity extends AppCompatActivity {
     EditText editTextnQuartos;
     EditText editTextPreco;
     List<House> houses;
-
-
     RecyclerView recycleView;
 
     @Override
@@ -60,7 +58,6 @@ public class ListHouseActivity extends AppCompatActivity {
         bindRecycleViewList();
         binFloatButton();
     }
-
 
     private void bindRecycleViewList() {
         recycleView = (RecyclerView) findViewById(R.id.list_houses);
@@ -82,10 +79,7 @@ public class ListHouseActivity extends AppCompatActivity {
         LinearLayoutManager llm = new LinearLayoutManager(ListHouseActivity.this);
         llm.setOrientation(LinearLayoutManager.VERTICAL);
         recycleView.setLayoutManager(llm);
-
         carregaLista();
-
-
         recycleView.addOnItemTouchListener(
                 new RecyclerItemClickListener(ListHouseActivity.this, new RecyclerItemClickListener.OnItemClickListener() {
                     @Override
@@ -100,11 +94,10 @@ public class ListHouseActivity extends AppCompatActivity {
     private void binToolbar() {
         toolbar = (Toolbar) findViewById(R.id.viewToobar);
         toolbar.inflateMenu(R.menu.menu_list_house);
-
         toolbar.setOnMenuItemClickListener(new Toolbar.OnMenuItemClickListener() {
             @Override
             public boolean onMenuItemClick(MenuItem item) {
-                if (item.getItemId() == R.id.mapa) {
+                if (item.getItemId() == R.id.mapa2) {
                     Intent goToMapa = new Intent(ListHouseActivity.this, ViewHouses.class);
                     startActivity(goToMapa);
                 }

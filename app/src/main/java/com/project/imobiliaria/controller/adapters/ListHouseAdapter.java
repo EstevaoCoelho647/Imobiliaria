@@ -13,6 +13,7 @@ import android.widget.CheckBox;
 import android.widget.ImageView;
 import android.widget.RatingBar;
 import android.widget.TextView;
+
 import com.bumptech.glide.Glide;
 import com.project.imobiliaria.R;
 import com.project.imobiliaria.model.entities.House;
@@ -22,9 +23,7 @@ import java.util.List;
 public abstract class ListHouseAdapter extends RecyclerView.Adapter<ListHouseAdapter.MyViewHolder> {
 
     private List<House> houses;
-
     Context context;
-
 
     public ListHouseAdapter(Context context, List<House> houses) {
         this.houses = houses;

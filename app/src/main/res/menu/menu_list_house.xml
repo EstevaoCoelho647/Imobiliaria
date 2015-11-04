@@ -7,7 +7,7 @@
         app:showAsAction="collapseActionView|ifRoom"
         android:actionViewClass="android.widget.SearchView" />
     <item
-        android:id="@+id/mapa"
+        android:id="@+id/mapa2"
         android:icon="@drawable/ic_map"
         android:title="Ver no Mapa"
         app:showAsAction="always" />

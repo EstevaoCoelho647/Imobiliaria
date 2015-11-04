@@ -3,7 +3,9 @@ package com.project.imobiliaria.model.persistence;
 import android.content.ContentValues;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+
 import com.project.imobiliaria.model.entities.House;
+
 import java.util.List;
 
 public class HouseRepository {

@@ -167,11 +167,9 @@ public class FormHouseActivity extends AppCompatActivity {
     }
 
 
-
     private void bindFoto() {
         foto = (ImageView) findViewById(R.id.image);
         foto.setImageDrawable(getResources().getDrawable(R.drawable.ic_picture));
-
         foto.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
