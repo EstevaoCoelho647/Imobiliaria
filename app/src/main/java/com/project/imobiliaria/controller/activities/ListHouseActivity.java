@@ -117,18 +117,7 @@ public class ListHouseActivity extends AppCompatActivity {
         });
     }
 
-    private void showErrorConnectionDialog() {
-        final AlertDialog.Builder dialogBuilder = new AlertDialog.Builder(ListHouseActivity.this);
-        dialogBuilder.setMessage("Nenhuma conexão com a internet detectada.\nPor favor verifique a sua conexão e tente novamente!");
-        dialogBuilder.setTitle("Aviso");
-        dialogBuilder.setNeutralButton("Ok", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialogInterface, int i) {
-                dialogBuilder.setCancelable(true);
-            }
-        });
-        dialogBuilder.show();
-    }
+
 
     private void verificaClick(final Dialog dialog) {
         btnBusca.setOnClickListener(new View.OnClickListener() {
@@ -157,6 +146,19 @@ public class ListHouseActivity extends AppCompatActivity {
             }
         });
         dialog.show();
+    }
+
+    private void showErrorConnectionDialog() {
+        final AlertDialog.Builder dialogBuilder = new AlertDialog.Builder(ListHouseActivity.this);
+        dialogBuilder.setMessage("Nenhuma conexão com a internet detectada.\nPor favor verifique a sua conexão e tente novamente!");
+        dialogBuilder.setTitle("Aviso");
+        dialogBuilder.setNeutralButton("Ok", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                dialogBuilder.setCancelable(true);
+            }
+        });
+        dialogBuilder.show();
     }
 
     private void binItens(Dialog dialog) {
