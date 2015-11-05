@@ -27,6 +27,7 @@ import com.bumptech.glide.Glide;
 import com.project.imobiliaria.R;
 import com.project.imobiliaria.model.entities.House;
 import com.project.imobiliaria.model.persistence.HouseRepository;
+import com.project.imobiliaria.model.util.Helper;
 
 import java.io.File;
 
@@ -76,10 +77,13 @@ public class FormHouseActivity extends AppCompatActivity {
             @Override
             public boolean onMenuItemClick(MenuItem item) {
                 if (item.getItemId() == R.id.ok_add) {
-                    bindHouse();
-                    HouseRepository.save(house);
-                    Toast.makeText(FormHouseActivity.this, "Residencia adicionada/editada com sucesso!", Toast.LENGTH_LONG).show();
-                    finish();
+                    String requiredMessage = "Campo Obrigatorio!";
+                    if (!Helper.validateRequired(requiredMessage, titulo, preco, bairro, rua, numero, telContato, nBanheiros, nquartos)) {
+                        bindHouse();
+                        HouseRepository.save(house);
+                        Toast.makeText(FormHouseActivity.this, "Residencia adicionada/editada com sucesso!", Toast.LENGTH_LONG).show();
+                        finish();
+                    }
                 }
                 return false;
             }

@@ -54,7 +54,6 @@ public class ListHouseActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_list_house);
-
         binToolbar();
         bindRecycleViewList();
         binFloatButton();
@@ -66,14 +65,12 @@ public class ListHouseActivity extends AppCompatActivity {
         recycleView.setOnScrollListener(new RecyclerView.OnScrollListener() {
             @Override
             public void onScrollStateChanged(RecyclerView recyclerView, int newState) {
-
                 super.onScrollStateChanged(recyclerView, newState);
             }
 
             @Override
             public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
                 super.onScrolled(recyclerView, dx, dy);
-
             }
         });
 
